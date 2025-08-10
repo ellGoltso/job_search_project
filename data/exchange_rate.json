@@ -1,0 +1,16 @@
+{
+    "success": true,
+    "timestamp": 1754804585,
+    "source": "RUB",
+    "quotes": {
+        "RUBGBP": 0.009338,
+        "RUBJPY": 1.851558,
+        "RUBEUR": 0.010766,
+        "RUBUZS": 157.739505,
+        "RUBUSD": 0.012541,
+        "RUBAZN": 0.021369,
+        "RUBKZT": 6.768676,
+        "RUBKGS": 1.096707,
+        "RUBBYN": 0.041353
+    }
+}
