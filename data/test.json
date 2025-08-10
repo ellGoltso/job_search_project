@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Junior Frontend разработчик",
+        "salary": 0,
+        "currency": "",
+        "link_to_vacancy": "https://hh.ru/vacancy/123648356",
+        "requirement": "Знание Git. Знание JS/HTML/CSS. Знание Vue.js, React, vite. Умение писать SQL. Умение подключать API, асинхронная подгрузка, кеширование. ",
+        "responsibility": null
+    },
+    {
+        "name": "Преподаватель Frontend",
+        "salary": 76074,
+        "currency": "RUB",
+        "link_to_vacancy": "https://hh.ru/vacancy/123841236",
+        "requirement": "Опыт работы в сфере Frontend-<highlighttext>разработки</highlighttext> или преподавания от 1 года. Уверенное знание HTML, CSS, JavaScript и одного или нескольких...",
+        "responsibility": "Знание узбекского и русского языков. <highlighttext>Разработка</highlighttext> и актуализация учебных материалов. Консультирование учеников и проверка практических заданий. Участие в <highlighttext>разработке</highlighttext> и..."
+    }
+]

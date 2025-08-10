@@ -20,7 +20,7 @@ class BaseSaver(ABC):
 
 class JSONSaver(BaseSaver):
 
-    def __init__(self, filename = "data/vacancies.json"):
+    def __init__(self, filename="data/vacancies.json"):
         self.__filename = filename
 
     def get_data(self):
@@ -49,11 +49,9 @@ class JSONSaver(BaseSaver):
         with open(self.__filename, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
 
-
     @staticmethod
     def __is_dict_in_list(target: dict, list_dict: list[dict]) -> bool:
         for dictionary in list_dict:
             if dictionary == target:
                 return True
         return False
-

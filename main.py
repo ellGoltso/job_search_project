@@ -6,11 +6,13 @@ from src.interaction_with_files import JSONSaver
 def selection_menu() -> int:
     """Меню выбора опций пользователя"""
     while True:
-        print("Добро пожаловать! Выберите опцию:\n"
-              "1. Ввести поисковый запрос для запроса вакансий из hh.ru\n"
-              "2. Получить топ N вакансий по зарплате\n"
-              "3. Получить вакансии с ключевым словом в описании.\n"
-              "4. Выход из программы.")
+        print(
+            "Добро пожаловать! Выберите опцию:\n"
+            "1. Ввести поисковый запрос для запроса вакансий из hh.ru\n"
+            "2. Получить топ N вакансий по зарплате\n"
+            "3. Получить вакансии с ключевым словом в описании.\n"
+            "4. Выход из программы."
+        )
         choice_str = input("Введите номер опции: ").strip()
         try:
             choice_int = int(choice_str)
@@ -53,7 +55,11 @@ if __name__ == "__main__":
 
             while True:
                 try:
-                    top_n = int(input("Введите сколько вакансий вы хотите увидеть(введите число) "))
+                    top_n = int(
+                        input(
+                            "Введите сколько вакансий вы хотите увидеть(введите число) "
+                        )
+                    )
                 except ValueError:
                     print("Введите число")
                     continue
@@ -79,7 +85,10 @@ if __name__ == "__main__":
             keyword = input("Введите ключевое слово: ")
             sorted_vacancies = []
             for vacancy in vacancies_list:
-                if vacancy.get_responsibility is not None and keyword in vacancy.get_responsibility:
+                if (
+                    vacancy.get_responsibility is not None
+                    and keyword in vacancy.get_responsibility
+                ):
                     sorted_vacancies.append(vacancy)
 
             print(sorted_vacancies)
