@@ -45,11 +45,12 @@ class Vacancy:
                 salary = 0
             else:
                 salary = cls.__salary_validation(vacancy['salary'])
-                currency = vacancy['salary']['currency']
+                currency = "RUB"
+
             alternate_url = vacancy['alternate_url']
             requirement = vacancy['snippet']['requirement']
             responsibility = vacancy['snippet']['responsibility']
-            vacancies_list.append(cls(name, salary, alternate_url, requirement, currency, responsibility))
+            vacancies_list.append(cls(name, salary, currency, alternate_url, requirement, responsibility))
         return vacancies_list
 
     @classmethod
@@ -79,10 +80,8 @@ class Vacancy:
             return average_salary
         elif salary_range['currency'] in symbols_list:
             average_salary = average_salary/rates['RUB' + salary_range['currency']]
-            salary_range['currency'] = 'RUB'
         elif salary_range['currency'] == 'BYR':
             average_salary = average_salary/rates['RUBBYN']
-            salary_range['currency'] = 'RUB'
 
         return int(average_salary)
 

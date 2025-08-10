@@ -45,6 +45,7 @@ class HeadHunterAPI(BaseApi):
 
 
 class ExchangeAPI:
+    """Класс для получения курсов валют"""
 
     __slots__ = '__apikey'
 
