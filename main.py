@@ -38,7 +38,6 @@ if __name__ == "__main__":
         if choice == 1:
             keyword = input("Введите запрос для поиска вакансий: ")
             hh_vacancies = hh_api.get_vacancies(keyword)
-            print(hh_vacancies)
             if not hh_vacancies:
                 print("Вакансий не найдено.")
                 continue

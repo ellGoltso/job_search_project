@@ -39,7 +39,6 @@ class HeadHunterAPI(BaseApi):
             vacancies = response.json()["items"]
             self.__vacancies.extend(vacancies)
             self.__params["page"] += 1
-        return self.__vacancies
 
     def get_vacancies(self, keyword):
         self.__connect_api(keyword)
