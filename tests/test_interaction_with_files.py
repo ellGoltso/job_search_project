@@ -1,5 +1,6 @@
-from unittest.mock import mock_open, patch
 import json
+from unittest.mock import mock_open, patch
+
 from src.interaction_with_files import JSONSaver
 from src.vacancy import Vacancy
 

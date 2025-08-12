@@ -1,16 +1,16 @@
 {
     "success": true,
-    "timestamp": 1754823556,
+    "timestamp": 1755025820,
     "source": "RUB",
     "quotes": {
-        "RUBGBP": 0.009338,
-        "RUBJPY": 1.851558,
-        "RUBEUR": 0.010766,
-        "RUBUZS": 157.739505,
-        "RUBUSD": 0.012541,
-        "RUBAZN": 0.021369,
-        "RUBKZT": 6.768676,
-        "RUBKGS": 1.096707,
-        "RUBBYN": 0.041353
+        "RUBGBP": 0.009307,
+        "RUBJPY": 1.855088,
+        "RUBEUR": 0.010763,
+        "RUBUZS": 157.419394,
+        "RUBUSD": 0.012556,
+        "RUBAZN": 0.021346,
+        "RUBKZT": 6.792418,
+        "RUBKGS": 1.096757,
+        "RUBBYN": 0.041457
     }
 }

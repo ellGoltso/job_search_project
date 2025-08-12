@@ -17,7 +17,7 @@ def test_init_vacancy(vacancy_fixture):
     assert (
         vacancy.get_responsibility
         == "Уровень: Руководитель / HRD. Формирование и реализация HR-стратегии, соответствующей целям стартапа. "
-           "Подбор ключевой команды: от инженерного до C‑level состава. "
+        "Подбор ключевой команды: от инженерного до C‑level состава. "
     )
     assert vacancy.name == "Директор по персоналу (HRD)"
     assert vacancy.currency == "RUB"
@@ -25,7 +25,7 @@ def test_init_vacancy(vacancy_fixture):
     assert (
         vacancy.requirement
         == "Опыт в роли HR-директора / HRBP от 10 лет, преимущественно в технологических / "
-           "производственных / международных стартапах. Опыт массового и точечного подбора..."
+        "производственных / международных стартапах. Опыт массового и точечного подбора..."
     )
 
 
@@ -47,3 +47,8 @@ def test_cast_to_object(vacancies_list_dict, vacancies_list, hh_api_answer_fixtu
     )
     vacancies = Vacancy.cast_to_obj_from_file(vacancies_list_dict)
     assert vacancies == vacancies_list
+
+
+def test_compare_vacancies(vacancy_low_salary_fixture, vacancy_fixture):
+    assert (vacancy_low_salary_fixture < vacancy_fixture) == True
+    assert (vacancy_low_salary_fixture > vacancy_fixture) == False

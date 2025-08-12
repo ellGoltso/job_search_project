@@ -24,6 +24,8 @@ class JSONSaver(BaseSaver):
         self.__filename = filename
 
     def get_data(self):
+        """Возвращает список словарей с вакансиями из json файла"""
+
         with open(self.__filename, "r", encoding="utf-8") as f:
             try:
                 data = json.load(f)
@@ -32,6 +34,8 @@ class JSONSaver(BaseSaver):
             return data
 
     def add_data(self, vacancies_list: list[Vacancy]):
+        """Принимает список вакансий list[Vacancy], проверяет вакансии на повтор и сохраняет уникальные в файл json"""
+
         vacancies_list_dict = self.get_data()
         for vacancy in vacancies_list:
             vacancy_dict = vacancy.to_dict()
@@ -42,6 +46,8 @@ class JSONSaver(BaseSaver):
             json.dump(vacancies_list_dict, f, indent=4, ensure_ascii=False)
 
     def delete_data(self, target: Vacancy):
+        """Принимает одну вакансию, если она сохранена в файле, удаляет ее оттуда"""
+
         data = self.get_data()
         target_dict = target.to_dict()
         if self.__is_dict_in_list(target_dict, data):
@@ -51,6 +57,8 @@ class JSONSaver(BaseSaver):
 
     @staticmethod
     def __is_dict_in_list(target: dict, list_dict: list[dict]) -> bool:
+        """Проверяет наличие словаря в списке словарей, возвращает bool"""
+
         for dictionary in list_dict:
             if dictionary == target:
                 return True

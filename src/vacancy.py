@@ -49,6 +49,9 @@ class Vacancy:
 
     @classmethod
     def cast_to_object_list(cls, hh_vacancies: list[dict]) -> list:
+        """Принимает список словарей (ответ от API hh.ru) выбирает из них нужные свойства,
+        выдает список элементов класса Vacancy"""
+
         vacancies_list = []
         for vacancy in hh_vacancies:
             name = vacancy["name"]
@@ -69,6 +72,8 @@ class Vacancy:
 
     @classmethod
     def cast_to_obj_from_file(cls, vacancies: list[dict]) -> list:
+        """Принимает список словарей (с уже отсортированными данными) и выдает список элементов Vacancy"""
+
         vacancies_list = []
         for vacancy in vacancies:
             vacancies_list.append(cls(**vacancy))
@@ -76,6 +81,7 @@ class Vacancy:
 
     @staticmethod
     def __salary_validation(salary_range: dict) -> int:
+        """Принимает словарь - ответ hh.ru по зарплате, проверяет в какой валюте указана зарплата в ответе от hh.ru, берет курс валюты из файла data/exchange_rates.json и возвращает в рублях"""
 
         if salary_range["from"] is not None and salary_range["to"] is not None:
             average_salary = int((salary_range["from"] + salary_range["to"]) / 2)
@@ -100,6 +106,8 @@ class Vacancy:
         return int(average_salary)
 
     def to_dict(self):
+        """Возвращает словарь с информацией о вакансии"""
+
         return {
             "name": self.name,
             "salary": self.salary,

@@ -1,30 +1,8 @@
-from src.interaction_with_API import HeadHunterAPI, ExchangeAPI
-from src.vacancy import Vacancy
+from src.auxiliary_functions import (choice_1, choice_2, choice_3,
+                                     selection_menu, try_get_data_from_file)
+from src.exchange_api import ExchangeAPI
+from src.interaction_with_API import HeadHunterAPI
 from src.interaction_with_files import JSONSaver
-
-
-def selection_menu() -> int:
-    """Меню выбора опций пользователя"""
-    while True:
-        print(
-            "Добро пожаловать! Выберите опцию:\n"
-            "1. Ввести поисковый запрос для запроса вакансий из hh.ru\n"
-            "2. Получить топ N вакансий по зарплате\n"
-            "3. Получить вакансии с ключевым словом в описании.\n"
-            "4. Выход из программы."
-        )
-        choice_str = input("Введите номер опции: ").strip()
-        try:
-            choice_int = int(choice_str)
-        except ValueError:
-            print("Введите число")
-            continue
-        else:
-            if choice_int < 1 or choice_int > 4:
-                print("Введите число от 1 до 4")
-                continue
-            return choice_int
-
 
 if __name__ == "__main__":
     hh_api = HeadHunterAPI()
@@ -36,61 +14,23 @@ if __name__ == "__main__":
         choice = selection_menu()
 
         if choice == 1:
-            keyword = input("Введите запрос для поиска вакансий: ")
-            hh_vacancies = hh_api.get_vacancies(keyword)
-            if not hh_vacancies:
-                print("Вакансий не найдено.")
+            func_answer = choice_1(hh_api, json_saver)
+            if func_answer == 1:
                 continue
-            vacancies_list = Vacancy.cast_to_object_list(hh_vacancies)
-            json_saver.add_data(vacancies_list)
-            print("Вакансии сохранены в файл.")
 
         elif choice == 2:
-            try:
-                data = json_saver.get_data()
-            except FileNotFoundError:
-                print("Сначала выполните поиск вакансий.")
+            data = try_get_data_from_file(json_saver)
+            if not data:
                 continue
-
-            while True:
-                try:
-                    top_n = int(
-                        input(
-                            "Введите сколько вакансий вы хотите увидеть(введите число) "
-                        )
-                    )
-                except ValueError:
-                    print("Введите число")
-                    continue
-                if top_n > len(data):
-                    print("В подборке нет столько вакансий.")
-                    continue
-                elif top_n < 1:
-                    print("Введите число больше 0.")
-                    continue
-                vacancies_list = Vacancy.cast_to_obj_from_file(data)
-                vacancies_list.sort(reverse=True)
-                print(vacancies_list[:top_n])
-                break
+            else:
+                choice_2(data)
 
         elif choice == 3:
-            try:
-                data = json_saver.get_data()
-            except FileNotFoundError:
-                print("Сначала выполните поиск вакансий.")
+            data = try_get_data_from_file(json_saver)
+            if not data:
                 continue
-
-            vacancies_list = Vacancy.cast_to_obj_from_file(data)
-            keyword = input("Введите ключевое слово: ")
-            sorted_vacancies = []
-            for vacancy in vacancies_list:
-                if (
-                    vacancy.get_responsibility is not None
-                    and keyword in vacancy.get_responsibility
-                ):
-                    sorted_vacancies.append(vacancy)
-
-            print(sorted_vacancies)
+            else:
+                choice_3(data)
 
         elif choice == 4:
             break
