@@ -1,3 +1,5 @@
+from src.interaction_with_API import HeadHunterAPI
+from src.interaction_with_files import JSONSaver
 from src.vacancy import Vacancy
 
 
@@ -24,7 +26,7 @@ def selection_menu() -> int:
             return choice_int
 
 
-def try_get_data_from_file(json_saver) -> list[dict]:
+def try_get_data_from_file(json_saver: JSONSaver) -> list[dict]:
     """Функция пробует получить данные из json файла и вернуть список словарей с вакансиями,
     если файл не найден возвращает пустой список"""
 
@@ -36,7 +38,7 @@ def try_get_data_from_file(json_saver) -> list[dict]:
     return data
 
 
-def choice_1(hh_api, json_saver) -> int:
+def choice_1(hh_api: HeadHunterAPI, json_saver: JSONSaver) -> int:
     """В функции собрана последовательность вызова функций для поиска вакансий"""
 
     keyword = input("Введите запрос для поиска вакансий: ")
@@ -50,7 +52,7 @@ def choice_1(hh_api, json_saver) -> int:
     return 0
 
 
-def choice_2(data):
+def choice_2(data: list[dict]):
     """В функции собрана последовательность вызова функций для вывода в консоль N-количества вакансий"""
 
     while True:
@@ -73,7 +75,7 @@ def choice_2(data):
         break
 
 
-def choice_3(data):
+def choice_3(data: list[dict]):
     """Функция предлагает пользователю ввести ключевое слово, сортирует вакансии по нему, и выводит в консоль"""
 
     vacancies_list = Vacancy.cast_to_obj_from_file(data)

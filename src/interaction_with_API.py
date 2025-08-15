@@ -24,7 +24,7 @@ class HeadHunterAPI(BaseApi):
         self.__params = {"text": "", "page": 0, "per_page": 100}
         self.__vacancies = []
 
-    def __connect_api(self, keyword):
+    def __connect_api(self, keyword: str):
         """Отправляет api запрос hh.ru и сохраняет ответ в свойстве __vacancies"""
 
         self.__params["text"] = keyword
@@ -40,7 +40,7 @@ class HeadHunterAPI(BaseApi):
             self.__vacancies.extend(vacancies)
             self.__params["page"] += 1
 
-    def get_vacancies(self, keyword):
+    def get_vacancies(self, keyword: str):
         """Вызывает приватный метод __connect_api и возвращает вакансии"""
 
         self.__connect_api(keyword)

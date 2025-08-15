@@ -14,7 +14,7 @@ class ExchangeAPI:
         load_dotenv()
         self.__apikey = os.getenv("APIKEY_EXCHANGE")
 
-    def exchange_rate(self, filename="data/exchange_rate.json"):
+    def exchange_rate(self, filename: str = "data/exchange_rate.json"):
         """Отправляет api запрос и сохраняет ответ в json файл"""
 
         currencies = "GBP,JPY,EUR,UZS,USD,AZN,KZT,KGS,BYN"

@@ -20,7 +20,7 @@ class BaseSaver(ABC):
 
 class JSONSaver(BaseSaver):
 
-    def __init__(self, filename="data/vacancies.json"):
+    def __init__(self, filename: str = "data/vacancies.json"):
         self.__filename = filename
 
     def get_data(self):
